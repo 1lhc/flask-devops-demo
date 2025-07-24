@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+env/
+venv/
+
+# Logs and DB
+*.log
+*.db
+
+# Docker
+*.tar
+*.img
+*.bak
+.dockerignore
+
+# macOS
+.DS_Store
+
+# Testing
+.pytest_cache/
+
+# Others
+*.swp
+*.tmp
