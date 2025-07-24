@@ -21,6 +21,7 @@ Visit http://127.0.0.1:5001
 
 ## File Structure
 
+```bash
 flask-devops-demo/
 ├── app.py
 ├── Dockerfile
@@ -29,3 +30,4 @@ flask-devops-demo/
 │ └── workflows/
 │ └── python-app.yml
 └── README.md
+```
