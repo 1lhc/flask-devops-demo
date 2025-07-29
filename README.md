@@ -1,33 +1,61 @@
 # Flask DevOps Demo
 
-This is a simple Flask application containerized using Docker, meant for practicing DevOps workflows.
+A simple Flask web application containerized using Docker, with automated testing (CI) using GitHub Actions.
 
-## Features
+## 🚀 Features
 
-- Simple Flask API that returns "Hello from DevOps demo!"
-- Containerized using Docker
-- Automatically tested using GitHub Actions (CI)
+- **Flask Web App:** Returns random motivational quotes and provides a `/health` endpoint.
+- **Unit Testing:** Uses `pytest` for automated testing.
+- **Docker Containerization:** Packages the app so it runs consistently on any system.
+- **CI Integration:** Tests run automatically on every push via GitHub Actions.
 
-## Running Locally
+## File Structure
 
-Make sure Docker is installed and running.
+```
+flask-devops-demo/
+├── app.py
+├── Dockerfile
+├── requirements.txt
+├── test_app.py
+├── .github/
+│   └── workflows/
+│       └── python-app.yml
+└── README.md
+```
+
+## 🛠️ Prerequisites
+
+- Docker Desktop installed on your system
+- Python 3.8 or newer
+- A GitHub account
+
+## 🧪 Local Setup
+
+```bash
+git clone https://github.com/1lhc/flask-devops-demo.git
+cd flask-devops-demo
+
+python3 -m venv venv
+source venv/bin/activate
+
+pip install -r requirements.txt
+python app.py  # Runs the Flask app locally
+```
+
+## 🐳 Running with Docker
 
 ```bash
 docker build -t flask-devops-demo .
 docker run -p 5001:5000 flask-devops-demo
 ```
 
-Visit http://127.0.0.1:5001
+Open your browser to [http://localhost:5001](http://localhost:5001)
 
-## File Structure
+## ✅ CI with GitHub Actions
 
-```bash
-flask-devops-demo/
-├── app.py
-├── Dockerfile
-├── requirements.txt
-├── .github/
-│ └── workflows/
-│ └── python-app.yml
-└── README.md
-```
+Tests are automatically run on every push or pull request to `main`. Check the **Actions** tab in the GitHub repository for results.
+
+## 🎯 Why This Project Matters
+
+- Shows ability to set up a **CI pipeline**
+- Demonstrates proficiency in **Docker containerization**
