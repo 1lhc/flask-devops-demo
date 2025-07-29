@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import random
 
 app = Flask(__name__)
@@ -24,7 +24,8 @@ quotes = [
 
 @app.route("/")
 def home():
-    return random.choice(quotes)
+    quote = random.choice(quotes)
+    return render_template("index.html", quote=quote)
 
 @app.route("/health")
 def health():
