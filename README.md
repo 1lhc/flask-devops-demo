@@ -57,6 +57,14 @@ docker run -p 5001:5000 flask-devops-demo
 
 # Use this to check what OS
 docker run -it --rm python:3.12-slim cat /etc/os-release
+
+# OR Get a shell inside the container
+docker exec -it <container_id> /bin/bash
+
+# Once inside, you can explore:
+cat /etc/os-release    # Check the Linux distribution
+python --version       # Check Python version
+pip list               # See installed packages
 ```
 Open your browser to [http://localhost:5001](http://localhost:5001)
 
