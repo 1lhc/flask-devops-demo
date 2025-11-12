@@ -54,7 +54,7 @@ docker build -t flask-devops-demo .
 
 # Run the container
 docker run -p 5001:5000 flask-devops-demo
-
+```
 Open your browser to [http://localhost:5001](http://localhost:5001)
 
 ## ✅ CI with GitHub Actions
