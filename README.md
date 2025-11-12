@@ -54,6 +54,9 @@ docker build -t flask-devops-demo .
 
 # Run the container
 docker run -p 5001:5000 flask-devops-demo
+
+# Use this to check what OS
+docker run -it --rm python:3.12-slim cat /etc/os-release
 ```
 Open your browser to [http://localhost:5001](http://localhost:5001)
 
