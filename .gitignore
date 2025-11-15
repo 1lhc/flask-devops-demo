@@ -24,3 +24,8 @@ venv/
 # Others
 *.swp
 *.tmp
+
+# Virtual environments
+venv/
+.venv/
+env/
