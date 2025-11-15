@@ -1,31 +1,68 @@
 # Python
 __pycache__/
 *.py[cod]
-*.egg-info/
-env/
-venv/
+*$py.class
+*.pyo
+*.pyd
+.Python
+*.so
 
-# Logs and DB
+# Virtual environments (SINGLE SECTION)
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# Package and distribution
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Logs and databases
 *.log
+*.sql
+*.sqlite
 *.db
 
 # Docker
 *.tar
 *.img
 *.bak
-.dockerignore
 
 # macOS
 .DS_Store
 
 # Testing
 .pytest_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+htmlcov/
 
-# Others
+# IDE and editors
+.vscode/
+.idea/
 *.swp
-*.tmp
+*.swo
+*~
 
-# Virtual environments
-venv/
-.venv/
-env/
+# OS
+Thumbs.db
+
+# Temporary files
+*.tmp
+temp/
+tmp/

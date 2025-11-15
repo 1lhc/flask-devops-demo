@@ -1,0 +1,53 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments (COMPLETE LIST)
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# Package management
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Logs
+*.log
+logs/
+
+# Git
+.git/
+.mypy_cache/
+.pytest_cache/
+.history/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker (optional but good practice)
+Dockerfile.dev
+docker-compose*.yml
+.docker/
