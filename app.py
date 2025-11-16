@@ -1,7 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import random
+import os
+import logging
+from datetime import datetime
 
 app = Flask(__name__)
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 quotes = [
     "Manifesting big moves, one day at a time.",
@@ -9,27 +16,42 @@ quotes = [
     "Less perfection, more authenticity.",
     "Dream big. Act now.",
     "Hustle quietly, let the algorithm do the noise.",
-    "Small steps daily = big glow‑up.",
+    "Small steps daily = big glow-up.",
     "Dream big, work hard, and make it happen.",
     "Small steps every day lead to big changes.",
     "Hustle until your haters ask if you're hiring.",
     "Stay focused, stay hungry, stay humble.",
     "Every day is a fresh start; make it count.",
-    "Believe in yourself, and you’re halfway there!",
-    "The glow‑up is real; it just takes time.",
+    "Believe in yourself, and you're halfway there!",
+    "The glow-up is real; it just takes time.",
     "Not every day is a cheat day; keep it balanced.",
-    "Discipline isn’t daily perfection. It’s consistent intention.",
+    "Discipline isn't daily perfection. It's consistent intention.",
     "Consistency > perfection. Keep going anyway."
 ]
 
 @app.route("/")
 def home():
     quote = random.choice(quotes)
+    logger.info(f"Quote served: {quote}")
     return render_template("index.html", quote=quote)
 
 @app.route("/health")
 def health():
-    return "OK", 200
+    """Health check endpoint for monitoring"""
+    return jsonify({
+        "status": "healthy",
+        "timestamp": datetime.utcnow().isoformat(),
+        "service": "flask-devops-demo"
+    }), 200
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+@app.route("/metrics")
+def metrics():
+    """Basic metrics endpoint for monitoring"""
+    return jsonify({
+        "quote_count": len(quotes),
+        "timestamp": datetime.utcnow().isoformat()
+    }), 200
+
+# comment out development server block (not for production)
+# if __name__ == "__main__":
+#     app.run(host="0.0.0.0", port=5000)
