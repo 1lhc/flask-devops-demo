@@ -35,38 +35,65 @@ flask-devops-demo/
 git clone https://github.com/1lhc/flask-devops-demo.git
 cd flask-devops-demo
 
-python3 -m venv venv
-source venv/bin/activate
+# Create and activate a virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
 
+# Install runtime deps (and tests when present)
 pip install -r requirements.txt
-python app.py  # Runs the Flask app locally
+
+# Run the app locally (development):
+# - The repository is configured to run under Gunicorn in production.
+# - For quick local testing you can use Flask's dev server (not for prod):
+python -m flask run --port 5000
 ```
-Open your browser to [http://localhost:5000](http://localhost:5000)
+
+Open your browser to http://localhost:5000
+
+## 🧪 Run Tests
+
+Install test tools (if not installed) and run the suite:
+
+```bash
+# If you haven't created the venv yet:
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install project deps + pytest for testing
+pip install -r requirements.txt pytest
+
+# Run tests
+pytest -q
+```
 
 ## 🐳 Docker Containerization
 
-This project is containerized using Docker for consistent deployments.
+This project is containerized using Docker for consistent deployments. The
+container runs the app under Gunicorn and listens on port `8000`.
 
 ### Build and Run Locally
+
 ```bash
 # Build the Docker image
 docker build -t flask-devops-demo .
 
-# Run the container
-docker run -p 5001:5000 flask-devops-demo
-
-# Use this to check what OS
-docker run -it --rm python:3.12-slim cat /etc/os-release
-
-# OR Get a shell inside the container
-docker exec -it <container_id> /bin/bash
-
-# Once inside, you can explore:
-cat /etc/os-release    # Check the Linux distribution
-python --version       # Check Python version
-pip list               # See installed packages
+# Run the container (maps container 8000 -> host 8000)
+docker run -p 8000:8000 flask-devops-demo
 ```
-Open your browser to [http://localhost:5001](http://localhost:5001)
+
+Open your browser to http://localhost:8000
+
+### Helpful container tips
+
+```bash
+# Get a shell inside a running container
+docker exec -it <container_id> /bin/sh
+
+# Inspect container environment
+cat /etc/os-release
+python --version
+pip list
+```
 
 ## ✅ CI with GitHub Actions
 
