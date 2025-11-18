@@ -1,3 +1,6 @@
+# docker-compose configuration for the flask-devops-demo project.
+# - Builds and runs the `web` service on port 8000
+# - Adds a simple HTTP healthcheck used by container runtimes
 services:
   web:
     build: .

@@ -1,3 +1,9 @@
+"""Unit tests for the `flask-devops-demo` application.
+
+These tests exercise the main page rendering and the health/metrics
+JSON endpoints to ensure they return expected status codes and fields.
+"""
+
 from app import app, quotes
 
 

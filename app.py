@@ -1,3 +1,14 @@
+"""flask-devops-demo application.
+
+This module defines the Flask application for the demo service. It provides:
+- `/`        : renders a random motivational quote into `index.html`
+- `/health`  : simple JSON health check for container orchestration
+- `/metrics` : basic JSON metrics (e.g., quote count)
+
+The app is intended to run under a production WSGI server (Gunicorn).
+The development server block is intentionally commented out.
+"""
+
 from flask import Flask, render_template, jsonify
 import random
 import os
@@ -26,8 +37,9 @@ quotes = [
     "The glow-up is real; it just takes time.",
     "Not every day is a cheat day; keep it balanced.",
     "Discipline isn't daily perfection. It's consistent intention.",
-    "Consistency > perfection. Keep going anyway."
+    "Consistency > perfection. Keep going anyway.",
 ]
+
 
 @app.route("/")
 def home():
@@ -35,22 +47,32 @@ def home():
     logger.info(f"Quote served: {quote}")
     return render_template("index.html", quote=quote)
 
+
 @app.route("/health")
 def health():
     """Health check endpoint for monitoring"""
-    return jsonify({
-        "status": "healthy",
-        "timestamp": datetime.utcnow().isoformat(),
-        "service": "flask-devops-demo"
-    }), 200
+    return (
+        jsonify(
+            {
+                "status": "healthy",
+                "timestamp": datetime.utcnow().isoformat(),
+                "service": "flask-devops-demo",
+            }
+        ),
+        200,
+    )
+
 
 @app.route("/metrics")
 def metrics():
     """Basic metrics endpoint for monitoring"""
-    return jsonify({
-        "quote_count": len(quotes),
-        "timestamp": datetime.utcnow().isoformat()
-    }), 200
+    return (
+        jsonify(
+            {"quote_count": len(quotes), "timestamp": datetime.utcnow().isoformat()}
+        ),
+        200,
+    )
+
 
 # comment out development server block (not for production)
 # if __name__ == "__main__":

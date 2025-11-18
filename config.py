@@ -1,3 +1,10 @@
+"""Configuration for the flask-devops-demo application.
+
+This module defines a base `Config` class with a secret key and the
+default list of motivational `QUOTES`. Two subclasses provide simple
+overrides for production and development environments.
+"""
+
 import os
 
 

@@ -1,3 +1,7 @@
+# Dockerfile for `flask-devops-demo`.
+# Builds a minimal Python 3.12 image, installs dependencies, creates a
+# non-root user, copies the application, and runs it under Gunicorn.
+
 FROM python:3.12-slim
 
 WORKDIR /app
