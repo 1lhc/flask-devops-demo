@@ -13,7 +13,7 @@ from flask import Flask, render_template, jsonify
 import random
 import os
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 
 app = Flask(__name__)
 
@@ -55,7 +55,7 @@ def health():
         jsonify(
             {
                 "status": "healthy",
-                "timestamp": datetime.utcnow().isoformat(),
+                "timestamp": datetime.now(timezone.utc).isoformat(),
                 "service": "flask-devops-demo",
             }
         ),
@@ -68,7 +68,10 @@ def metrics():
     """Basic metrics endpoint for monitoring"""
     return (
         jsonify(
-            {"quote_count": len(quotes), "timestamp": datetime.utcnow().isoformat()}
+            {
+                "quote_count": len(quotes),
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+            }
         ),
         200,
     )
