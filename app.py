@@ -11,7 +11,6 @@ The development server block is intentionally commented out.
 
 from flask import Flask, render_template, jsonify
 import random
-import os
 import logging
 from datetime import datetime, timezone
 
