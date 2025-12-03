@@ -8,10 +8,11 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
+    <!-- Dev: see ../requirements-dev.txt for test deps (pytest) -->
   </head>
   <body>
     <div class="container">
-      <h1>{{ quote }}</h1>
+      <h1>{{ quote|safe }}</h1>
       <p><a href="/">Show another</a></p>
     </div>
   </body>
